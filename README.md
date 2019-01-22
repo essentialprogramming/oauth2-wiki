@@ -55,7 +55,7 @@ The flow includes the following steps: Authorization Request and Token Request:
 * If authentication of the end-user is successful and the user grants access to the requested resource, the   Identity Provider   returns an Authorization Code and redirects the user to the Client application .  
 * The Client then exchanges this Authorization Code for an access token . From there, the access token can be used to access the desired Resource(s) on the Resource Server. If the access token is being used for repeated API access that doesn’t have any other type of session management (like a session cookie), then it can be used until it expires (this assumes no one-time use or similar policy on the token). When the access token expires, a refresh token (which would be cached on the Client) can be used to obtain a new access token. This grant is geared towards confidential clients (server-side application components or something else that can protect the client secret); although, it can be used with public clients such as SPA Web Apps or Mobile Apps.
 
-![some kind of image](/img/img1.png)
+![some kind of image](img/img1.png)
 
 ### Implicit grant
 
