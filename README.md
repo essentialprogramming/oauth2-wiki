@@ -41,7 +41,7 @@ The flow includes the following steps: Authorization Request and Token Request:
   Eventually, the user agent will be passed an authorization code. That authorization code will be passed to the Client via a browser redirect to the redirect_uri endpoint. This response from the authorization endpoint will look something like:  
   HTTP/1.1 302 Found Location: https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=xyz
 
-* **Token Request** - The Client, will use the authorization code in the following call to the token endpoint
+* **Token Request** - The Client will use the authorization code in the following call to the token endpoint
   ```java
   POST /oauth2/token HTTP/1.1 
   Host: authorization-server.com 
