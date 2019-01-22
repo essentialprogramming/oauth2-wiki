@@ -36,7 +36,7 @@ The flow includes the following steps: Authorization Request and Token Request:
   
   https://oauth2/authorize?client_id=$CLIENT_ID&response_type=code&redirect_uri=$CLIENT_REDIRECT_URI&state=$STATE 
 
-  NOTE: Outside of the OAuth2 spec, the authorization endpoint will redirect the user to some form of login workflow. This could be on the same identity provider (Authorization Server) or could be a different one that has a federation relationship with this Authorization Server. That federation relationship between our Authorization Server and the third-party IdP could be based upon SAML , OpenID Connect or other protocols.          
+  *NOTE: Outside of the OAuth2 spec, the authorization endpoint will redirect the user to some form of login workflow. This could be on the same identity provider (Authorization Server) or could be a different one that has a federation relationship with this Authorization Server. That federation relationship between our Authorization Server and the third-party IdP could be based upon SAML , OpenID Connect or other protocols.*          
 
   Eventually, the user agent will be passed an authorization code. That authorization code will be passed to the Client via a browser redirect to the redirect_uri endpoint. This response from the authorization endpoint will look something like:  
   HTTP/1.1 302 Found Location: https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=xyz
@@ -44,7 +44,7 @@ The flow includes the following steps: Authorization Request and Token Request:
 * **Token Request** - The Client, will use the authorization code in the following call to the token endpoint
   ```java
   POST /oauth2/token HTTP/1.1 
-  Host: idp.example.com 
+  Host: authorization-server.com 
   Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW 
   Content-Type: application/x-www-form-urlencoded 
   grant_type=authorization_code&code=SplxlOBeZQQYbYS6WxSbIA 
@@ -82,7 +82,7 @@ The Resource Owner password credentials flow is also known as the username-passw
 * **Token Request** -  The Resource Owner Password Credentials flow requires only a single step, where your client application performs a POST request to the /oauth2/token token endpoint with the grant_type set to password and including the resource owner’s credentials, in order to obtain an access token  
   * ```java
     POST /oauth2/token HTTP/1.1 
-    Host: idp.example.com
+    Host: authorization-server.com
     Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW 
     Content-Type: application/x-www-form-urlencoded 
     grant_type=  password & username=johndoe&password=A3ddj3w  
