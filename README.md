@@ -36,7 +36,7 @@ The flow includes the following steps: Authorization Request and Token Request:
   
   https://oauth2/authorize?client_id=$CLIENT_ID&response_type=code&redirect_uri=$CLIENT_REDIRECT_URI&state=$STATE 
 
-  *NOTE: Outside of the OAuth2 spec, the authorization endpoint will redirect the user to some form of login workflow. This could be on the same identity provider (Authorization Server) or could be a different one that has a federation relationship with this Authorization Server. That federation relationship between our Authorization Server and the third-party IdP could be based upon SAML , OpenID Connect or other protocols.*          
+      <em>**NOTE: Outside of the OAuth2 spec, the authorization endpoint will redirect the user to some form of login workflow. This could be on the same identity provider (Authorization Server) or could be a different one that has a federation relationship with this Authorization Server. That federation relationship between our Authorization Server and the third-party IdP could be based upon SAML , OpenID Connect or other protocols.** </em>         
 
   Eventually, the user agent will be passed an authorization code. That authorization code will be passed to the Client via a browser redirect to the redirect_uri endpoint. This response from the authorization endpoint will look something like:  
   HTTP/1.1 302 Found Location: https://client.example.com/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=xyz
