@@ -34,7 +34,7 @@ The flow includes the following steps: Authorization Request and Token Request:
   * redirect_uri - The same URL you registered as Callback URL during the client registration. 
   * state - (optional) A string used to maintain state between the request and callback. The parameter is used to protect against Cross-Site Request Forgery (CSRF).          
   
-  https://oauth2/authorize?client_id=$CLIENT_ID&response_type=code&redirect_uri=$CLIENT_REDIRECT_URI&state=$STATE 
+   [https://oauth2/authorize?client_id=$CLIENT_ID & response_type=code & redirect_uri=$CLIENT_REDIRECT_URI & state=$STATE ](https://oauth2/authorize)
 
       <em>**NOTE: Outside of the OAuth2 spec, the authorization endpoint will redirect the user to some form of login workflow. This could be on the same identity provider (Authorization Server) or could be a different one that has a federation relationship with this Authorization Server. That federation relationship between our Authorization Server and the third-party IdP could be based upon SAML , OpenID Connect or other protocols.** </em>         
 
