@@ -1,7 +1,7 @@
 # Oauth2 Fundamentals
 
 
-     **OAuth2** is an open standard for authorization  specified in the OAuth 2.0 Authorization Framework.  
+**OAuth2** is an open standard for authorization  specified in the OAuth 2.0 Authorization Framework.  
      The OAuth 2.0 specification defines an authorization protocol (*a protocol that is focused on what actors have access to — not who the actor is*). This is specifically geared towards allowing a resource owner (user, most likely) to grant third-party applications and websites access to resources (which could be just about anything). Think of use cases such as a mobile app that can post pictures to Facebook where you authorize the app access to Facebook once and, from that point onward you can simply post pictures from the app to Facebook. As an authorization protocol, the details of how authentications works are largely undefined; in fact, in some cases the details of how the credentials are passed from the Client or User to Identity Provider aren’t specifically defined (that leaves a lot of room for things to get a little weird or, at least, custom). OAuth defines four primary actors:
 
 * **Resource owner (RO)**: The entity that can grant access to a protected resource exposed by an API.  Typically this is the end-user.    
@@ -52,12 +52,14 @@ The flow includes the following steps: Authorization Request and Token Request:
   ```
 
   Note: Every request to the OAuth 2.0 token endpoint requires client authentication.  To authenticate an application with the Authorization Server, use the standard Authorization header with the basic authentication scheme, where the username is the client_id and the password is the client_secret: Authorization: Basic Base64($CLIENT_ID:$CLIENT_SECRET)  
+
+Authorization code grant diagram
+![oauth-diagram-token-request](img/oauth-diagram-token-request.png)
+
 * The end user initiates the flow by clicking on a login link, button, or similar action. The application redirects the User Agent to the Identity Provider (authorization endpoint).  
 * The   Identity Provider   redirects the user to the authentication workflow (most likely a series of screens) that is not defined in the scope of the spec .  
 * If authentication of the end-user is successful and the user grants access to the requested resource, the   Identity Provider   returns an Authorization Code and redirects the user to the Client application .  
 * The Client then exchanges this Authorization Code for an access token . From there, the access token can be used to access the desired Resource(s) on the Resource Server. If the access token is being used for repeated API access that doesn’t have any other type of session management (like a session cookie), then it can be used until it expires (this assumes no one-time use or similar policy on the token). When the access token expires, a refresh token (which would be cached on the Client) can be used to obtain a new access token. This grant is geared towards confidential clients (server-side application components or something else that can protect the client secret); although, it can be used with public clients such as SPA Web Apps or Mobile Apps.
-
-![some kind of image](img/img1.PNG)
 
 ### Implicit grant
 
@@ -75,6 +77,9 @@ https://oauth2/authorize?client_id=$CLIENT_ID&response_type=token&redirect_uri=$
 
   Note: You’ll notice that the access_token and other details are passed to the Client as query parameters in an HTTP redirect— not as part of a response message body. 
 
+Implicit grant diagram
+![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant.png)
+
 ### Resource owner password credentials (or just password) grant
 
 The Resource Owner password credentials flow is also known as the username-password authentication flow. This flow can be used as a replacement for an existing login when the consumer already has the user’s credentials.   This grant involves the Client application asking for the username and password directly from the end-user rather than directing the user to a login page hosted by the Authorization Server (or other Identity Provider) like in the first two Grants.  It is also used to migrate existing clients using direct authentication schemes such as HTTP Basic or Digest authentication to OAuth by converting the stored credentials to an access token
@@ -87,14 +92,21 @@ The Resource Owner password credentials flow is also known as the username-passw
     Content-Type: application/x-www-form-urlencoded 
     grant_type=  password & username=johndoe&password=A3ddj3w  
     ```
-    Note: Every request to the OAuth 2.0 token endpoint requires client authentication. To authenticate an application with the Authorization Server, use the standard Authorization header with the basic authentication scheme, where the username is the client_id and the password is the client_secret: Authorization: Basic Base64($CLIENT_ID:$CLIENT_SECRET)  
+  Note: Every request to the OAuth 2.0 token endpoint requires client authentication. To authenticate an application with the Authorization Server, use the standard Authorization header with the basic authentication scheme, where the username is the client_id and the password is the client_secret: Authorization: Basic Base64($CLIENT_ID:$CLIENT_SECRET)  
   * After the Web server has obtained an access token, it can gain access to protected resources on the Resource Server by placing it in an Authorization: Bearer HTTP header:                                                                                                                                                                          GET /oauth/protected HTTP/1.1
 Authorization: Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9
 Host:   authorization-server.com  
 
+Implicit grant diagram
+![oauth-diagram-resource-owner-password-credentials-flow](img/oauth-diagram-resource-owner-password-credentials-flow.png)
+
 ### Client Credentials grant
 
 This Grant does not authenticate an end-user, it just authenticates the Client; similar to the Resource Owner Password Grant, it is not an interactive login. It can only be used by a confidential Client. This is what is known as two-legged OAuth. If validation of the client credentials is successful, then an access token is returned that represents the Client. This is a simple, yet effective, way of managing the authentication step when the authorization decision only depends upon the calling application and not the end user. The following diagram was adapted from the OAuth2 spec:
+
+Client Credentials grant
+![oauth-diagram-client-credentials-flow](img/oauth-diagram-client-credentials-flow.png)
+
 
 ## Accessing protected resources 
 
@@ -138,10 +150,10 @@ A JSON Web Token (JWT) is a JSON-based security token encoding that enables iden
     * “iat” (Issued At) Claim: the time at which the JWT was issued — determines age of the token. Typically, the same as the “nbf” claim.
     * “jti” (JWT ID) Claim: a unique identifier for the JWT from the generating Identity Provider.   
     * The JWT must be signed.
-    * The JWT must conform with the general format rules specified here:http://tools.ietf.org/html/draft-jones-json-web-toke.
+    * The JWT must conform with the general format rules specified here: http://tools.ietf.org/html/draft-jones-json-web-toke
 1. Base64 url encode the JWT Claims Set
 1. Create a new string from the encoded JWT header from step 2, and the encoded JWT Claims Set from step 4, and append them as follows:    Base64URLEncode(JWT Header) + . + Base64URLEncode(JWT Claims Set)
-1. Sign the resulting string in step 5 . The signature must then be Base64 url encoded. The signature is then concatenated with a.character to the end of the Base64url representation of the input string. The result is the following JWT (line breaks added for clarity):                                                    {Base64url encoded header}. {Base64url encoded claim set}.
+1. Sign the resulting string in step 5 . The signature must then be Base64 url encoded. The signature is then concatenated with a.character to the end of the Base64url representation of the input string. The result is the following JWT (line breaks added for clarity): {Base64url encoded header}. {Base64url encoded claim set}.
 
 **JWT Signature**: To create the JWT signature you  take the encoded header, the encoded payload, a secret, the algorithm specified in the header and sign that. The algorithm is part of the JWT header, for example :
 
