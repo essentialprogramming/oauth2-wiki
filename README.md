@@ -99,7 +99,7 @@ The Resource Owner password credentials flow is also known as the username-passw
 Authorization: Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9
 Host:   authorization-server.com  
 
-Implicit grant diagram
+Resource owner password credentials grant diagram
 
 ![oauth-diagram-resource-owner-password-credentials-flow](img/oauth-diagram-resource-owner-password-credentials-flow.png)
 
@@ -107,7 +107,7 @@ Implicit grant diagram
 
 This Grant does not authenticate an end-user, it just authenticates the Client; similar to the Resource Owner Password Grant, it is not an interactive login. It can only be used by a confidential Client. This is what is known as two-legged OAuth. If validation of the client credentials is successful, then an access token is returned that represents the Client. This is a simple, yet effective, way of managing the authentication step when the authorization decision only depends upon the calling application and not the end user. The following diagram was adapted from the OAuth2 spec:
 
-Client Credentials grant
+Client Credentials grant diagram
 
 ![oauth-diagram-client-credentials-flow](img/oauth-diagram-client-credentials-flow.png)
 
