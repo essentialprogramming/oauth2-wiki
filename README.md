@@ -54,6 +54,7 @@ The flow includes the following steps: Authorization Request and Token Request:
   Note: Every request to the OAuth 2.0 token endpoint requires client authentication.  To authenticate an application with the Authorization Server, use the standard Authorization header with the basic authentication scheme, where the username is the client_id and the password is the client_secret: Authorization: Basic Base64($CLIENT_ID:$CLIENT_SECRET)  
 
 Authorization code grant diagram
+
 ![oauth-diagram-token-request](img/oauth-diagram-token-request.png)
 
 * The end user initiates the flow by clicking on a login link, button, or similar action. The application redirects the User Agent to the Identity Provider (authorization endpoint).  
@@ -78,6 +79,7 @@ https://oauth2/authorize?client_id=$CLIENT_ID&response_type=token&redirect_uri=$
   Note: You’ll notice that the access_token and other details are passed to the Client as query parameters in an HTTP redirect— not as part of a response message body. 
 
 Implicit grant diagram
+
 ![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant.png)
 
 ### Resource owner password credentials (or just password) grant
@@ -98,6 +100,7 @@ Authorization: Bearer O91G451HZ0V83opz6udiSEjchPynd2Ss9
 Host:   authorization-server.com  
 
 Implicit grant diagram
+
 ![oauth-diagram-resource-owner-password-credentials-flow](img/oauth-diagram-resource-owner-password-credentials-flow.png)
 
 ### Client Credentials grant
@@ -105,6 +108,7 @@ Implicit grant diagram
 This Grant does not authenticate an end-user, it just authenticates the Client; similar to the Resource Owner Password Grant, it is not an interactive login. It can only be used by a confidential Client. This is what is known as two-legged OAuth. If validation of the client credentials is successful, then an access token is returned that represents the Client. This is a simple, yet effective, way of managing the authentication step when the authorization decision only depends upon the calling application and not the end user. The following diagram was adapted from the OAuth2 spec:
 
 Client Credentials grant
+
 ![oauth-diagram-client-credentials-flow](img/oauth-diagram-client-credentials-flow.png)
 
 
