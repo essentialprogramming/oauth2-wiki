@@ -55,7 +55,7 @@ The flow includes the following steps: Authorization Request and Token Request:
 
 Authorization code grant diagram
 
-![oauth-diagram-token-request](img/oauth-diagram-token-request.png)
+![oauth-diagram-token-request](img/authorization-code-flow.png)
 
 * The end user initiates the flow by clicking on a login link, button, or similar action. The application redirects the User Agent to the Identity Provider (authorization endpoint).  
 * The   Identity Provider   redirects the user to the authentication workflow (most likely a series of screens) that is not defined in the scope of the spec .  
