@@ -57,6 +57,10 @@ Authorization code grant diagram
 
 ![oauth-diagram-token-request](img/authorization-code-flow.png)
 
+Authorization code grant diagram 2 
+
+![oauth-diagram-token-request](img/authorization-code-flow-v2.png)
+
 * The end user initiates the flow by clicking on a login link, button, or similar action. The application redirects the User Agent to the Identity Provider (authorization endpoint).  
 * The   Identity Provider   redirects the user to the authentication workflow (most likely a series of screens) that is not defined in the scope of the spec .  
 * If authentication of the end-user is successful and the user grants access to the requested resource, the   Identity Provider   returns an Authorization Code and redirects the user to the Client application .  
@@ -83,7 +87,7 @@ https://oauth2/authorize?client_id=$CLIENT_ID&response_type=token&redirect_uri=$
 
 Implicit grant diagram 1
 
-![oauth-diagram-implicit-grant](img/Implicit_Flow.png)
+![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant_v2.png)
 
 Implicit grant diagram 2
 ![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant.png)
