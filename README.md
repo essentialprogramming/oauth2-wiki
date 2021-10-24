@@ -83,6 +83,7 @@ https://oauth2/authorize?client_id=$CLIENT_ID&response_type=token&redirect_uri=$
 
 Implicit grant diagram
 
+![oauth-diagram-implicit-grant](img/Implicit_Flow.png)
 ![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant.png)
 
 Example ( Login with Google ):
