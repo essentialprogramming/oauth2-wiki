@@ -81,9 +81,11 @@ https://oauth2/authorize?client_id=$CLIENT_ID&response_type=token&redirect_uri=$
 
   Note: You’ll notice that the access_token and other details are passed to the Client as query parameters in an HTTP redirect— not as part of a response message body. 
 
-Implicit grant diagram
+Implicit grant diagram 1
 
 ![oauth-diagram-implicit-grant](img/Implicit_Flow.png)
+
+Implicit grant diagram 2
 ![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant.png)
 
 Example ( Login with Google ):
