@@ -24,7 +24,7 @@ The Oauth2 flows (also called grant types) are scenarios an API client performs 
 Using different grants types (or flows), the participants will interact to grant to the client apps limited access to the APIs you are building. As a result, the client app will obtain an Access Token that can be used to call the API on behalf of the user.
 
 ### Authorization code grant
-The most common flow, which involves end-users and authorizing third-party applications to access that end-user’s resources without exposing the end-user’s credentials to the third-party application. The client application doesn’t need to store or even directly request any resource owner’s credentials. This is generally referred to as three-legged OAuth.
+The most commonly used flow used by traditional web apps with a server backend (server side rendering), which involves end-users and authorizing third-party applications to access that end-user’s resources without exposing the end-user’s credentials to the third-party application. The client application doesn’t need to store or even directly request any resource owner’s credentials. This is generally referred to as three-legged OAuth.
 
 The flow includes the following steps: Authorization Request and Token Request:
 
