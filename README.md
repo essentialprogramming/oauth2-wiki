@@ -87,7 +87,7 @@ https://oauth2/authorize?client_id=$CLIENT_ID&response_type=token&redirect_uri=$
 
 Implicit grant diagram 1
 
-![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant_v2.png)
+![oauth-diagram-implicit-grant_v2](img/oauth-diagram-implicit-grant_v2.png)
 
 Implicit grant diagram 2
 ![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant.png)
@@ -101,6 +101,12 @@ Because the authorization code flow requires a client secret to request the auth
 
 * Man in the middle attack can’t issue tokens, even if they collect the authorization code as they need the code verifier.
 * No tokens are send using redirects which is less safe than doing a direct HTTP request to the authorization server (browser history and accessing tokens from XSS attack as they are available from window.location)
+
+Proof Key for Code Exchange (PKCE) diagram
+![authorization-code-flow-with-PKCE](img/authorization-code-flow-with-PKCE.png)
+
+Example ( Login with Google ):
+![pkce-flow-google-example](img/pkce-flow-google-example.png)
 
 ### Resource owner password credentials (or just password) grant
 
