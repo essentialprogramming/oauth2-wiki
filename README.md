@@ -95,6 +95,13 @@ Implicit grant diagram 2
 Example ( Login with Google ):
 ![implicit-flow-google-example](img/implicit-flow-google-example.png)
 
+### Proof Key for Code Exchange (PKCE)
+
+Because the authorization code flow requires a client secret to request the authorization code and a public client, like a single-page application, can’t store secrets, another approach was neccessary. The Proof Key for Code Exchange (PKCE) solves this by instead of using a fixed client secret generates a dynamic client secret at the beginning of the authorization request. This ensures:
+
+* Man in the middle attack can’t issue tokens, even if they collect the authorization code as they need the code verifier.
+* No tokens are send using redirects which is less safe than doing a direct HTTP request to the authorization server (browser history and accessing tokens from XSS attack as they are available from window.location)
+
 ### Resource owner password credentials (or just password) grant
 
 The Resource Owner password credentials flow is also known as the username-password authentication flow. This flow can be used as a replacement for an existing login when the consumer already has the user’s credentials.   This grant involves the Client application asking for the username and password directly from the end-user rather than directing the user to a login page hosted by the Authorization Server (or other Identity Provider) like in the first two Grants.  It is also used to migrate existing clients using direct authentication schemes such as HTTP Basic or Digest authentication to OAuth by converting the stored credentials to an access token
