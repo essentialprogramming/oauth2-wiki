@@ -102,7 +102,13 @@ Because the authorization code flow requires a client secret to request the auth
 * Man in the middle attack can’t issue tokens, even if they collect the authorization code as they need the code verifier.
 * No tokens are send using redirects which is less safe than doing a direct HTTP request to the authorization server (browser history and accessing tokens from XSS attack as they are available from window.location)
 
-Proof Key for Code Exchange (PKCE) diagram
+#### Approach
+* Generate code verifier, a cryptographically random string using the characters A-Z, a-z, 0-9, and the punctuation characters -._~ (hyphen, period, underscore, and tilde), between 43 and 128 characters long
+* Use the code verifier to generate the code challenge. This requires that the device can perform a SHA256 hash. The code challenge is a BASE64 URL encoded string of this SHA256 hash. If the client can’t perform the SHA256 hash it is permitted to use the plain code verifier string as a challenge.
+* The code_challenge and code_challende_method are sent on the authorization request along with the usual parameters in the authorization request. The code_challenge is either the code verifier or the BASE64 encoded SHA256 hash. If it is the plain code verifier code_challenge_method is set to plain, else it is set to S256.
+* On the access token request, the code_verifier is sent so the authorization server can verify that the client requesting the tokens are the same that did the authorization request in step 3.
+
+
 ![authorization-code-flow-with-PKCE](img/authorization-code-flow-with-PKCE.png)
 
 Example ( Login with Google ):
