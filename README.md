@@ -85,6 +85,9 @@ Implicit grant diagram
 
 ![oauth-diagram-implicit-grant](img/oauth-diagram-implicit-grant.png)
 
+Example ( Login with Google ):
+![implicit-flow-google-example](img/implicit-flow-google-example.png)
+
 ### Resource owner password credentials (or just password) grant
 
 The Resource Owner password credentials flow is also known as the username-password authentication flow. This flow can be used as a replacement for an existing login when the consumer already has the user’s credentials.   This grant involves the Client application asking for the username and password directly from the end-user rather than directing the user to a login page hosted by the Authorization Server (or other Identity Provider) like in the first two Grants.  It is also used to migrate existing clients using direct authentication schemes such as HTTP Basic or Digest authentication to OAuth by converting the stored credentials to an access token
